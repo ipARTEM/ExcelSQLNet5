@@ -1,0 +1,41 @@
+﻿@model List<ExcelSQLNet5.Models.ListExcelsViewModel>
+
+<h1>SQL Table</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+
+            <th>
+                ListExcels
+            </th>
+
+            <th>
+                ErrorsTotal
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ListExcels)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ErrorsTotal)
+            </td>
+        </tr>
+
+        }
+    </tbody>
+</table>

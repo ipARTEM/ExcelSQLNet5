@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Таблицы из Excel </h2>
+
+<h2>Импорт файла Excel</h2>
+<div>
+    @using (Html.BeginForm("Import", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-excel" }))
+    {
+        <div>
+            Загрузите Excel-файл:
+            <input type="file" name="fileExcel" id="fileExcel" />
+            <div>
+                <input type="submit" value="Загрузить" />
+            </div>
+        </div>
+    }
+</div>
+<h2>
+    Экспорт файла Excel
+</h2>
+<div>
+    <a href="@Url.RouteUrl("Default", new { controller = "Home", action = "Export"})">Скачать файл</a>
+</div>

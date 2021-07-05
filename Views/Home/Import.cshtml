@@ -1,0 +1,48 @@
+﻿@using ExcelSQLNet5.Models
+@model ListExcelsViewModel
+@{
+    ViewData["Title"] = "Таблицы из Excel";
+}
+
+<h2>Таблицы из Excel </h2>
+
+<div class="pb-0">
+    @($"Ошибок при импорте: {Model.ErrorsTotal}")
+    <div>
+        @foreach (ListExcel oneList in Model.ListExcels)
+        {
+            int positionsCounter = 0;
+            <h3>
+                Лист: @oneList.Title
+            </h3>
+            <table class="table ">
+                <thead>
+                    <tr class=" table-primary">
+
+                        @*<th></th>*@
+
+                        @foreach (ColumnName oneRow in oneList.CollectionOfSheets)
+                        {
+                            <th>@oneRow.Title</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (CellPosition cells in oneList.CollectionOfSheets[0].ColumnPositions)
+                    {
+                        <tr>
+                            @*<th class=" table-primary" >
+                                    @cells.FirstName
+                                </th>*@
+                            @foreach (ColumnName oneRow in oneList.CollectionOfSheets)
+                            {
+                                <td>@oneRow.ColumnPositions[positionsCounter].Cell</td>
+                            }
+                        </tr>
+                        positionsCounter++;
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
